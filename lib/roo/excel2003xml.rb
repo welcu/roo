@@ -20,6 +20,7 @@ class Excel2003XML < GenericSpreadsheet
       FileUtils::mkdir(@tmpdir)
     end
     filename = open_from_uri(filename) if filename[0,7] == "http://"
+    filename = open_from_uri(filename) if filename[0,8] == "https://"
     filename = unzip(filename) if packed and packed == :zip
     begin
       file_type_check(filename,'.xml','an Excel 2003 XML')
